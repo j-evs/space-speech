@@ -1,23 +1,27 @@
 import React, { PropTypes } from 'react';
 import SpeechPreview from './SpeechPreview';
+import '../styles/SpeechList.less';
 
 const SpeechList = ({ speeches, onSpeechClick }) => (
-    <ul>
-        {
-            speeches.map( (speech, i) => {
-                let { id, iconSrc, description} = speech;
-                return (
-                    <SpeechPreview
-                        key={id}
-                        id={id}
-                        iconSrc={iconSrc}
-                        description={description}
-                        onClick={() => onSpeechClick(i)}
-                    />
-                );
-            })
-        }
-    </ul>
+    <div className="speechlist">
+        <h2 className="speechlist__header">Explore our library of famous public speeches</h2>
+        <ul className="speechlist__speech-container">
+            {
+                speeches.map( (speech, i) => {
+                    let { id, iconSrc, description} = speech;
+                    return (
+                        <SpeechPreview
+                            key={id}
+                            id={id}
+                            iconSrc={iconSrc}
+                            description={description}
+                            onClick={() => onSpeechClick(i)}
+                            />
+                    );
+                })
+            }
+        </ul>
+    </div>
 );
 
 SpeechList.propTypes = {

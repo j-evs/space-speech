@@ -1,6 +1,6 @@
-import FormData from 'form-data';
 import parsers from 'playlist-parser';
 let playlistParser = parsers.PLS;
+
 //action constants
 export const SELECT_SPEECH = 'SELECT_SPEECH';
 export const GET_STREAM = 'GET_STREAM';
@@ -14,7 +14,6 @@ export function selectSpeech(index) {
         index
     }
 }
-
 
 //async action (maybe need thunk middleware)
 export function getAudioStream() {
@@ -30,7 +29,7 @@ export function recieveAudioStream(streamSrc) {
     }
 }
 
-export function testAsync(index, requestURL) {
+export function fetchRadioStream(index, requestURL) {
     return dispatch => {
         dispatch(getAudioStream());
         dispatch(selectSpeech(index));

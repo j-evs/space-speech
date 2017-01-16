@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { testAsync } from '../actions';
+import { fetchRadioStream } from '../actions';
 
 import '../styles/RandomizeButton.less';
 
@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         selectRandomSpeech: function() {
             let randomSpeechIndex = Math.floor(Math.random() * this.props.availableSpeechesIDs.length);
-            dispatch(testAsync(randomSpeechIndex, 'https://radio.orange.com/radios/somafm_space_station/streams'));
+            dispatch(fetchRadioStream(randomSpeechIndex, 'https://radio.orange.com/radios/somafm_space_station/streams'));
             this.props.router.push(`/listen/${this.props.availableSpeechesIDs[randomSpeechIndex]}`);
         }
     }

@@ -50,6 +50,8 @@
 
         top: 0;
         left: 0;
+
+        z-index: -1;
     }
 
     &__image {
@@ -90,4 +92,18 @@
 
         animation: descriptionAnimation 240s linear infinite 0s;
     }
+
+    &__audio-player {
+        z-index: 1000;
+    }
+}
+
+.audio-players-wrapper {
+    width: 800px;
+    position: absolute;
+    top: 80%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: flex;
 }

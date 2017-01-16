@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { testAsync } from '../actions';
+import { fetchRadioStream } from '../actions';
 
 import SpeechList from '../components/SpeechList';
 
@@ -18,7 +18,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onSpeechClick: (index) => {
-            dispatch(testAsync(index, 'https://radio.orange.com/radios/somafm_space_station/streams'));
+            dispatch(fetchRadioStream(index, 'https://radio.orange.com/radios/somafm_space_station/streams'));
         }
     }
 }
