@@ -1,24 +1,31 @@
 import { connect } from 'react-redux';
-import { fetchRadioStream } from '../actions';
+import { initializePlayback } from '../actions';
 
 import SpeechList from '../components/SpeechList';
 
 
 //place to add logic for filtering availableSpeeches later
-const getVisibleSpeeches = (speeches) => {
-    return speeches;
+const getSpeechesPreviewInfo = (speechData) => {
+    return speechData.speechList.map((speechID) => {
+        const { previewIcon, description } = speechData.speeches[speechID];
+        return {
+            speechID,
+            previewIcon,
+            description
+        };
+    });
 };
 
 const mapStateToProps = (state) => {
     return {
-        speeches: getVisibleSpeeches(state.speechData.availableSpeeches),
+        speechesPreviewInfo: getSpeechesPreviewInfo(state.speechData),
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSpeechClick: (index) => {
-            dispatch(fetchRadioStream(index, 'https://radio.orange.com/radios/somafm_space_station/streams'));
+        onSpeechClick: (speechID) => {
+            dispatch(initializePlayback(speechID, 'https://radio.orange.com/radios/somafm_space_station/streams'));
         }
     }
 }

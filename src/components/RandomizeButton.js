@@ -1,24 +1,26 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { fetchRadioStream } from '../actions';
+import { initializePlayback } from '../actions';
 
 import '../styles/RandomizeButton.less';
 
 const mapStateToProps = (state) => {
     return {
-        availableSpeechesIDs: state.speechData.availableSpeeches.map(speech => speech.id)
+        speechList: state.speechData.speechList
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         selectRandomSpeech: function() {
-            let randomSpeechIndex = Math.floor(Math.random() * this.props.availableSpeechesIDs.length);
-            dispatch(fetchRadioStream(randomSpeechIndex, 'https://radio.orange.com/radios/somafm_space_station/streams'));
-            this.props.router.push(`/listen/${this.props.availableSpeechesIDs[randomSpeechIndex]}`);
+            const { speechList } = this.props;
+            let randomSpeechIndex = Math.floor(Math.random() * speechList.length);
+            let randomSpeechID = speechList[randomSpeechIndex];
+            dispatch(initializePlayback(randomSpeechID, 'https://radio.orange.com/radios/somafm_space_station/streams'));
+            this.props.router.push(`/listen/${randomSpeechID}`);
         }
-    }
+    };
 }
 
 class RandomizeButton extends Component {

@@ -17,7 +17,7 @@ export default class Root extends Component {
                     <Route path='/' component={App}>
                         <IndexRoute component={Intro} />
                         <Route path='/library' component={AvailableSpeeches} />
-                        <Route path='/listen/:speechDescription' component={SpeechPlayer} />
+                        <Route path='/listen/:speechID' component={SpeechPlayer} />
                     </Route>
                 </Router>
             </Provider>

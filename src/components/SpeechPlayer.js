@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { initializePlayback } from '../actions';
 import AudioPlayer from './AudioPlayer';
 
 import '../styles/SpeechPlayer.less';
@@ -7,21 +8,31 @@ import '../styles/SpeechPlayer.less';
 import SpeechAudioIcon from './icons/SpeechAudioIcon';
 import StreamAudioIcon from './icons/StreamAudioIcon';
 
-const mapStateToProps = (state) => {
+
+
+const mapStateToProps = (state, ownProps) => {
     return {
-        currentSpeech: state.speechData.currentSpeech,
+        currentSpeech: state.speechData.speeches[ownProps.params.speechID],
         currentRadioStream: state.currentRadioStream
     };
 }
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        initializePlayback: function() {
+            dispatch(initializePlayback(ownProps.params.speechID))
+        }
+    };
+}
+
 class SpeechPlayer extends Component {
+    componentDidMount() {
+        this.props.initializePlayback();
+    }
     render() {
-        const { audioSrc, info } = this.props.currentSpeech || {
-            audioSrc: undefined,
-            pictures: undefined,
-            info: undefined
-        };
-        const { currentRadioStream } = this.props || '';
+        console.log(this.props);
+        const { audioSrc, info } = this.props.currentSpeech;
+        const { currentRadioStream } = this.props;
         const animationDelaySeconds = 60;
         //if (document.getElementById('stream')) {
         //    document.getElementById('stream').volume = 0.2;
@@ -85,4 +96,4 @@ class SpeechPlayer extends Component {
 
 
 
-export default connect(mapStateToProps)(SpeechPlayer);
+export default connect(mapStateToProps,mapDispatchToProps)(SpeechPlayer);

@@ -8,12 +8,12 @@ export const RECIEVED_STREAM = 'RECIEVED_STREAM';
 
 
 
-export function selectSpeech(index) {
-    return {
-        type: SELECT_SPEECH,
-        index
-    }
-}
+// export function selectSpeech(speechID) {
+//     return {
+//         type: SELECT_SPEECH,
+//         speechID
+//     }
+// }
 
 //async action (maybe need thunk middleware)
 export function getAudioStream() {
@@ -22,17 +22,16 @@ export function getAudioStream() {
     }
 }
 
-export function recieveAudioStream(streamSrc) {
+export function recieveAudioStream(radioStreamURL) {
     return {
         type: RECIEVED_STREAM,
-        url: streamSrc
+        url: radioStreamURL
     }
 }
 
-export function fetchRadioStream(index, requestURL) {
+export function initializePlayback(speechID, radioPlaylistRequestURL) {
     return dispatch => {
         dispatch(getAudioStream());
-        dispatch(selectSpeech(index));
         return fetch('https://somafm.com/spacestation.pls')
             .then(response => response.text())
             .then(text => playlistParser.parse(text))

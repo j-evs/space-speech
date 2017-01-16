@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-
-const SpeechPreview = ({ id, iconSrc, description, onClick }) => (
+//onClick тут не нужен!!!!
+const SpeechPreview = ({ id, icon, description, onClick }) => (
     <li>
         <Link
             to={`/listen/${id}`}
             onClick={onClick}
         >
-            <img src={iconSrc} alt={description}/>
+            <img src={icon} alt={description}/>
             <p>{description}</p>
         </Link>
     </li>

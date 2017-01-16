@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { SELECT_SPEECH, RECIEVED_STREAM } from './actions';
+import { RECIEVED_STREAM } from './actions';
 
 
 function speechSelector(state = {
@@ -7,10 +7,6 @@ function speechSelector(state = {
     currentSpeech: ''
 }, action) {
     switch (action.type) {
-        case SELECT_SPEECH:
-            return Object.assign({}, state, {
-                currentSpeech: Object.assign({}, state.availableSpeeches[action.index])
-            });
         default:
             return state;
     }
