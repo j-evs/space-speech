@@ -1,17 +1,19 @@
 .player {
     margin: 70px;
+    padding: 20px;
     flex-basis: 400px;
     display: flex;
 
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
 
     &__control-btn {
-        width: 40%;
+        background-color: transparent;
+        border: none;
     }
 
     &__svg-wrapper {
@@ -19,10 +21,21 @@
         text-align: center;
     }
 }
-
-.seekBar-wrapper {
-    display: flex;
+.seekbar {
+    & .seekbar__specific {
+        margin: 10px 5px;
+    }
+    &-wrapper {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+    }
+    &__timebox {
+        display: inline-flex;
+        align-items: center;
+    }
 }
+
 
 
 

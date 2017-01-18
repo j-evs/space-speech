@@ -9,6 +9,7 @@ import MLKPic1 from './media/King_IHaveADream/King_IHaveADream__pic1.jpg';
 import MLKPic2 from './media/King_IHaveADream/King_IHaveADream__pic2.jpg';
 import MLKPic3 from './media/King_IHaveADream/King_IHaveADream__pic3.jpg';
 import MLKPic4 from './media/King_IHaveADream/King_IHaveADream__pic4.jpg';
+import MLKIcon from './media/img/fist.svg';
 
 //Raegan "Challenger" speech
 import ChallengerSpeech from './media/Raegan_Challenger/Raegan_Challenger__speech.mp3';
@@ -16,6 +17,7 @@ import ChallengerPic1 from './media/Raegan_Challenger/Raegan_Challenger__pic1.jp
 import ChallengerPic2 from './media/Raegan_Challenger/Raegan_Challenger__pic2.jpg';
 import ChallengerPic3 from './media/Raegan_Challenger/Raegan_Challenger__pic3.jpg';
 import ChallengerPic4 from './media/Raegan_Challenger/Raegan_Challenger__pic4.jpg';
+import ChallengerIcon from './media/img/Shuttle.svg';
 
 //Kennedy "We choose to go to the Moon" speech
 import MoonSpeech from './media/Kennedy_Moon/Kennedy_Moon__speech.mp3';
@@ -23,12 +25,13 @@ import MoonPic1 from './media/Kennedy_Moon/Kennedy_Moon__pic1.jpg';
 import MoonPic2 from './media/Kennedy_Moon/Kennedy_Moon__pic2.jpg';
 import MoonPic3 from './media/Kennedy_Moon/Kennedy_Moon__pic3.jpg';
 import MoonPic4 from './media/Kennedy_Moon/Kennedy_Moon__pic4.jpg';
+import MoonIcon from './media/img/Moon.svg';
 
 const speeches = {
     MLK: {
         audioSrc: MLKSpeech,
-        previewIcon: './path/to/icon',
-        description: 'Famous MLK speech',
+        previewIcon: MLKIcon,
+        description: '"I Have a Dream" is a public speech delivered by American civil rights activist Martin Luther King Jr. during the March on Washington for Jobs and Freedom on August 28, 1963, in which he calls for an end to racism in the United States and called for civil and economic rights. Delivered to over 250,000 civil rights supporters from the steps of the Lincoln Memorial in Washington, D.C., the speech was a defining moment of the American Civil Rights Movement.[2]',
         info: [
             {
                 picture: MLKPic1,
@@ -50,8 +53,8 @@ const speeches = {
     },
     Challenger: {
         audioSrc: ChallengerSpeech,
-        previewIcon: './path/to/icon',
-        description: 'Famous Challenger speech',
+        previewIcon: ChallengerIcon,
+        description: 'On January 28, 1986, the American shuttle orbiter Challenger broke up 73 seconds after liftoff, bringing a devastating end to the spacecraft’s 10th mission. The disaster claimed the lives of all seven astronauts aboard. President Reagan delivered a nationwide speech following the Space Shuttle Challenger disaster ',
         info: [
             {
                 picture: ChallengerPic1,
@@ -74,8 +77,8 @@ const speeches = {
     },
     Moon: {
         audioSrc: MoonSpeech,
-        previewIcon: './path/to/icon',
-        description: 'Famous Moon speech',
+        previewIcon: MoonIcon,
+        description: 'The "Address at Rice University on the Nation\'s Space Effort", or better known simply as the "We choose to go to the moon" speech, was delivered by U.S. President John F. Kennedy in front of a large crowd gathered at Rice Stadium in Houston, Texas on September 12, 1962. It was one of Kennedy\'s earlier speeches meant to persuade the American people to support the national effort to land a man on the Moon and return him safely to the Earth.',
         info: [
             {
                 picture: MoonPic1,

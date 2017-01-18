@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import PlayIcon from './icons/PlayIcon';
+import PauseIcon from './icons/PauseIcon';
 import '../styles/AudioPlayer.less';
+
+import throttle from 'lodash.throttle';
 
 //<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -44,9 +48,17 @@ class AudioPlayer extends Component {
         this.setState({trackDuration: this.audio.duration});
     }
 
+    formatTimeInSeconds(timeInSeconds) {
+        let minutes = Math.floor(timeInSeconds / 60);
+        let seconds = Math.floor(timeInSeconds - (minutes * 60));
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        return `${minutes}:${seconds}`
+    }
+
     render() {
         const audioSrc = this.props.src;
         const id = this.props.id || 'default';
+        const formattedTime = this.formatTimeInSeconds(this.state.trackCurrentTime);
 
         return (
             <div className='player'>
@@ -64,14 +76,14 @@ class AudioPlayer extends Component {
                     type="button"
                     onClick={this.play}
                 >
-                    Play
+                    <PlayIcon />
                 </button>
                 <button
                     className="player__control-btn player__control-btn--play"
                     type="button"
                     onClick={this.pause}
                 >
-                    Pause
+                    <PauseIcon />
                 </button>
                 <input
                     id={id}
@@ -80,9 +92,10 @@ class AudioPlayer extends Component {
                     onChange={this.handleVolumeChange} min='0' max="1" step='0.01'
                 />
                 {id !== 'stream' &&
-                    <div className='seekBar-wrapper'>
-                        <span>{this.state.trackCurrentTime}</span>
+                    <div className='seekbar-wrapper'>
+                        <span className='seekbar__timebox'>{formattedTime}</span>
                         <input
+                            className='seekbar seekbar__specific'
                             id={id}
                             type='range'
                             min='0'
@@ -91,7 +104,7 @@ class AudioPlayer extends Component {
                             onChange={this.handleSeek}
                             value={this.state.trackCurrentTime}
                         />
-                        <span>{this.state.trackDuration}</span>
+                    <span className='seekbar__timebox'>{this.formatTimeInSeconds(this.state.trackDuration)}</span>
                 </div>
                 }
             </div>
