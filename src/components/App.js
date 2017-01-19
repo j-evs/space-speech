@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import '../styles/App.less';
-class App extends React.Component {
+
+import { getSpeechData } from '../actions';
+
+const mapStateToProps = (state) => {
+    return state;
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getSpeeches: function() {
+            dispatch(getSpeechData());
+        }
+    };
+};
+
+class App extends Component {
+    componentWillMount() {
+        this.props.getSpeeches();
+    }
+
     render() {
         return (
             <div>
@@ -10,4 +30,4 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

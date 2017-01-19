@@ -1,12 +1,31 @@
 import { combineReducers } from 'redux';
-import { RECIEVED_STREAM } from './actions';
+import { RECEIVED_STREAM, RECEIVED_SPEECHDATA } from './actions';
 
+// const initialState = {
+//         speechData: {
+//             speechList: getSpeechList(speeches),
+//             speeches,
+//         },
+//         currentRadioStream: undefined
+// }
 
-function speechSelector(state = {
-    availableSpeeches: [],
-    currentSpeech: ''
-}, action) {
+const getSpeechList = (speeches) => {
+    return Object.keys(speeches);
+}
+
+function createSpeechList(state = [], action) {
     switch (action.type) {
+        case RECEIVED_SPEECHDATA:
+            return getSpeechList(action.speechData);
+        default:
+            return state;
+    }
+}
+
+function importSpeechData(state = {}, action) {
+    switch (action.type) {
+        case RECEIVED_SPEECHDATA:
+            return action.speechData
         default:
             return state;
     }
@@ -14,15 +33,20 @@ function speechSelector(state = {
 
 function currentRadioStream(state = '', action) {
     switch (action.type) {
-        case RECIEVED_STREAM:
+        case RECEIVED_STREAM:
             return action.url;
         default:
             return state;
     }
 }
 
+const speechData = combineReducers({
+    speechList: createSpeechList,
+    speeches: importSpeechData
+});
+
 
 export default combineReducers({
-    speechData: speechSelector,
-    currentRadioStream: currentRadioStream
+    speechData,
+    currentRadioStream
 });
