@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { RECEIVED_STREAM, RECEIVED_SPEECHDATA } from './actions';
+import { RECEIVED_STREAM, FETCHING_SPEECHDATA, RECEIVED_SPEECHDATA } from './actions';
 
 // const initialState = {
 //         speechData: {
@@ -13,6 +13,17 @@ const getSpeechList = (speeches) => {
     return Object.keys(speeches);
 }
 
+function checkIfLoading(state = true, action) {
+    switch (action.type) {
+        case FETCHING_SPEECHDATA:
+            return true;
+        case RECEIVED_SPEECHDATA:
+            return false;
+        default:
+            return state;
+    }
+}
+
 function createSpeechList(state = [], action) {
     switch (action.type) {
         case RECEIVED_SPEECHDATA:
@@ -21,6 +32,7 @@ function createSpeechList(state = [], action) {
             return state;
     }
 }
+
 
 function importSpeechData(state = {}, action) {
     switch (action.type) {
@@ -31,7 +43,7 @@ function importSpeechData(state = {}, action) {
     }
 }
 
-function currentRadioStream(state = '', action) {
+function currentRadioStream(state = '', action) {    
     switch (action.type) {
         case RECEIVED_STREAM:
             return action.url;
@@ -42,7 +54,8 @@ function currentRadioStream(state = '', action) {
 
 const speechData = combineReducers({
     speechList: createSpeechList,
-    speeches: importSpeechData
+    speeches: importSpeechData,
+    isLoading: checkIfLoading
 });
 
 

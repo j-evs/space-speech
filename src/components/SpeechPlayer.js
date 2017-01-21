@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { initializePlayback } from '../actions';
 import AudioPlayer from './AudioPlayer';
@@ -7,7 +7,6 @@ import '../styles/SpeechPlayer.less';
 
 import SpeechAudioIcon from './icons/SpeechAudioIcon';
 import StreamAudioIcon from './icons/StreamAudioIcon';
-
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -30,7 +29,9 @@ class SpeechPlayer extends Component {
         this.props.initializePlayback();
     }
     render() {
-        console.log(this.props);
+
+        console.log('Speechplayer rendered');
+
         const { audioSrc, info } = this.props.currentSpeech;
         const { currentRadioStream } = this.props;
         const animationDelaySeconds = 60;

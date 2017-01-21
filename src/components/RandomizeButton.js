@@ -1,6 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import { initializePlayback } from '../actions';
 
 import '../styles/RandomizeButton.less';
@@ -29,8 +28,8 @@ class RandomizeButton extends Component {
     }
 }
 
-RandomizeButton.propTypes = {
-    onClick: PropTypes.func.isRequired
-}
+// RandomizeButton.propTypes = {
+//     onClick: PropTypes.func.isRequired
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RandomizeButton);

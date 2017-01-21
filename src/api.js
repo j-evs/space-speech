@@ -103,7 +103,7 @@ const delay = (ms) => {
 
 
 export function fetchSpeechData() {
-    return delay(1000).then(() => {
+    return delay(5000).then(() => {
         return fakeDatabase;
     });
 }

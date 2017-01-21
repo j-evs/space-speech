@@ -8,7 +8,8 @@ const logger = createLogger();
 // const initialState = {
 //         speechData: {
 //             speechList: [],
-//             speeches: {}
+//             speeches: {},
+//             isLoading: false
 //         },
 //         currentRadioStream: undefined
 // }

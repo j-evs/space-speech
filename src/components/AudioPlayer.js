@@ -3,7 +3,7 @@ import PlayIcon from './icons/PlayIcon';
 import PauseIcon from './icons/PauseIcon';
 import '../styles/AudioPlayer.less';
 
-import throttle from 'lodash.throttle';
+// import throttle from 'lodash.throttle';
 
 //<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 

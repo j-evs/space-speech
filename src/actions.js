@@ -6,7 +6,7 @@ import * as api from './api';
 //action constants
 export const SELECT_SPEECH = 'SELECT_SPEECH';
 export const GET_STREAM = 'GET_STREAM';
-export const RECIEVED_STREAM = 'RECIEVED_STREAM';
+export const RECEIVED_STREAM = 'RECIEVED_STREAM';
 export const FETCHING_SPEECHDATA = 'FETCHING_SPEECHDATA';
 export const RECEIVED_SPEECHDATA = 'RECEIVED_SPEECHDATA';
 
@@ -28,7 +28,7 @@ export function getAudioStream() {
 
 export function recieveAudioStream(radioStreamURL) {
     return {
-        type: RECIEVED_STREAM,
+        type: RECEIVED_STREAM,
         url: radioStreamURL
     }
 }
