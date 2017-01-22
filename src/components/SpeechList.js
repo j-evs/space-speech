@@ -2,8 +2,7 @@ import React, { PropTypes } from 'react';
 import SpeechPreview from './SpeechPreview';
 import '../styles/SpeechList.less';
 
-const SpeechList = ({ speechesPreviewInfo, onSpeechClick }) => (
-
+const SpeechList = ({ speechesPreviewInfo }) => (
     <div className="speechlist">
         <h2 className="speechlist__header">Explore our library of famous public speeches</h2>
         <ul className="speechlist__speech-container">
@@ -16,25 +15,20 @@ const SpeechList = ({ speechesPreviewInfo, onSpeechClick }) => (
                             id={speechID}
                             icon={previewIcon}
                             description={description}
-                            onClick={() => onSpeechClick(speechID)}
-                            />
+                        />
                     );
                 })
             }
         </ul>
     </div>
-
-
 );
 
 SpeechList.propTypes = {
-    speeches: PropTypes.arrayOf(PropTypes.shape({
-        audioSrc: PropTypes.string.isRequired,
-        pictures: PropTypes.array.isRequired,
-        info: PropTypes.array.isRequired,
-        iconSrc: PropTypes.string.isRequired
-    }).isRequired).isRequired,
-    onSpeechClick: PropTypes.func.isRequired
+    speechesPreviewInfo: PropTypes.arrayOf(PropTypes.shape({
+        description: PropTypes.string.isRequired,
+        previewIcon: PropTypes.string.isRequired,
+        speechID: PropTypes.string.isRequired
+    }).isRequired).isRequired
 }
 
 export default SpeechList;

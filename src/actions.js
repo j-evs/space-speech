@@ -11,15 +11,6 @@ export const FETCHING_SPEECHDATA = 'FETCHING_SPEECHDATA';
 export const RECEIVED_SPEECHDATA = 'RECEIVED_SPEECHDATA';
 
 
-
-// export function selectSpeech(speechID) {
-//     return {
-//         type: SELECT_SPEECH,
-//         speechID
-//     }
-// }
-
-//async action (maybe need thunk middleware)
 export function getAudioStream() {
     return {
         type: GET_STREAM

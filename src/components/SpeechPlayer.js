@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { initializePlayback } from '../actions';
 import AudioPlayer from './AudioPlayer';
@@ -8,37 +8,22 @@ import '../styles/SpeechPlayer.less';
 import speechAudioIcon from '../media/img/icons/speech.svg';
 import streamAudioIcon from '../media/img/icons/radio-stream.svg';
 
-
-const mapStateToProps = (state, ownProps) => {
-    return {
-        currentSpeech: state.speechData.speeches[ownProps.params.speechID],
-        currentRadioStream: state.currentRadioStream
-    };
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        initializePlayback: function() {
-            dispatch(initializePlayback(ownProps.params.speechID))
-        }
-    };
-}
+const mapStateToProps = (state, ownProps) => ({
+    currentSpeech: state.speechData.speeches[ownProps.params.speechID],
+    currentRadioStream: state.currentRadioStream
+});
 
 class SpeechPlayer extends Component {
     componentDidMount() {
-        this.props.initializePlayback();
+        const { dispatch } = this.props;
+        const { speechID } = this.props.params;
+        dispatch(initializePlayback(speechID));
     }
+
     render() {
-
-        console.log('Speechplayer rendered');
-
-        const { audioSrc, info } = this.props.currentSpeech;
         const { currentRadioStream } = this.props;
+        const { audioSrc, info } = this.props.currentSpeech;
         const animationDelaySeconds = 60;
-        //if (document.getElementById('stream')) {
-        //    document.getElementById('stream').volume = 0.2;
-        //}
-
         const slideShowContents = info.map((info, index) => {
             let animationDelay = `${( index * animationDelaySeconds)}s`;
             return (
@@ -64,37 +49,33 @@ class SpeechPlayer extends Component {
                 </li>
             );
         });
+
         return (
-            <div>
-                {
-                    !audioSrc && <div>Loading</div>
-                }
-                {
-                    audioSrc &&
-                    <div className="speech-player">
-                        <ul className="speech-player__slideshow">
-                            {slideShowContents}
-                        </ul>
-                        <div className='audio-players-wrapper'>
-                            <AudioPlayer
-                                className="speech-player__audio-player"
-                                src={audioSrc}
-                                logo={speechAudioIcon}
-                            />
-                            <AudioPlayer
-                                className="speech-player__audio-player"
-                                src={currentRadioStream}
-                                id='stream'
-                                logo={streamAudioIcon}
-                            />
-                        </div>
-                    </div>
-                }
+            <div className="speech-player">
+                <ul className="speech-player__slideshow">
+                    {slideShowContents}
+                </ul>
+                <div className='audio-players-wrapper'>
+                    <AudioPlayer
+                        className="speech-player__audio-player"
+                        src={audioSrc}
+                        logo={speechAudioIcon}
+                    />
+                    <AudioPlayer
+                        className="speech-player__audio-player"
+                        src={currentRadioStream}
+                        id='stream'
+                        logo={streamAudioIcon}
+                    />
+                </div>
             </div>
         );
     }
 }
 
+SpeechPlayer.propTypes = {
+    currentSpeech: PropTypes.object.isRequired,
+    currentRadioStream: PropTypes.string.isRequired
+}
 
-
-export default connect(mapStateToProps,mapDispatchToProps)(SpeechPlayer);
+export default connect(mapStateToProps)(SpeechPlayer);

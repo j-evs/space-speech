@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import playIcon from '../media/img/icons/play.svg';
 import pauseIcon from '../media/img/icons/pause.svg';
@@ -7,8 +7,6 @@ import Isvg from 'react-inlinesvg';
 
 import '../styles/AudioPlayer.less';
 // import throttle from 'lodash.throttle';
-
-//<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 class AudioPlayer extends Component {
     constructor() {
@@ -61,7 +59,8 @@ class AudioPlayer extends Component {
     render() {
         const audioSrc = this.props.src;
         const id = this.props.id || 'default';
-        const formattedTime = this.formatTimeInSeconds(this.state.trackCurrentTime);
+        const formattedTrackCurrentTime = this.formatTimeInSeconds(this.state.trackCurrentTime);
+        const formattedTrackDuration = this.formatTimeInSeconds(this.state.trackDuration);
 
         return (
             <div className='player'>
@@ -73,7 +72,8 @@ class AudioPlayer extends Component {
                     src={audioSrc}
                     onTimeUpdate={this.handleOnTimeUpdate}
                     onLoadedMetadata={this.parseMetadata}
-                    autoPlay>
+                    autoPlay
+                >
                     Your browser does not support the audio element. Sorry:(
                 </audio>
                 <button
@@ -93,7 +93,7 @@ class AudioPlayer extends Component {
                 <div className='volume-wrapper'>
                     <div className='player__control-btn'>
                         <Isvg src={volumeIcon} />
-                    </div> 
+                    </div>
                     <input
                         id={id}
                         type="range"
@@ -103,7 +103,7 @@ class AudioPlayer extends Component {
                 </div>
                 {id !== 'stream' &&
                     <div className='seekbar-wrapper'>
-                        <span className='seekbar__timebox'>{formattedTime}</span>
+                        <span className='seekbar__timebox'>{formattedTrackCurrentTime}</span>
                         <input
                             className='seekbar seekbar__specific'
                             id={id}
@@ -114,12 +114,18 @@ class AudioPlayer extends Component {
                             onChange={this.handleSeek}
                             value={this.state.trackCurrentTime}
                         />
-                    <span className='seekbar__timebox'>{this.formatTimeInSeconds(this.state.trackDuration)}</span>
-                </div>
+                        <span className='seekbar__timebox'>{formattedTrackDuration}</span>
+                    </div>
                 }
             </div>
         );
     }
+}
+
+AudioPlayer.propTypes = {
+    src: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    logo: PropTypes.string.isRequired
 }
 
 export default AudioPlayer;

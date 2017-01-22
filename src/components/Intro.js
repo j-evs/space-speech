@@ -7,7 +7,6 @@ import RandomizeButton from './RandomizeButton';
 
 export default class Intro extends Component {
     render() {
-        console.log('Child component rendered');
         return (
             <div className="intro-wrapper">
                 <div className="intro-container">

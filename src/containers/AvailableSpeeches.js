@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { initializePlayback } from '../actions';
 
 import SpeechList from '../components/SpeechList';
 
@@ -16,23 +15,14 @@ const getSpeechesPreviewInfo = (speechData) => {
     });
 };
 
-const mapStateToProps = (state) => {
-    return {
-        speechesPreviewInfo: getSpeechesPreviewInfo(state.speechData),
-    }
-}
+const mapStateToProps = (state) => ({
+    speechesPreviewInfo: getSpeechesPreviewInfo(state.speechData),
+});
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onSpeechClick: (speechID) => {
-            dispatch(initializePlayback(speechID, 'https://radio.orange.com/radios/somafm_space_station/streams'));
-        }
-    }
-}
+
 
 const availableSpeeches = connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
 )(SpeechList);
 
 export default availableSpeeches;
