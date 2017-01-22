@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import PlayIcon from './icons/PlayIcon';
-import PauseIcon from './icons/PauseIcon';
-import '../styles/AudioPlayer.less';
 
+import playIcon from '../media/img/icons/play.svg';
+import pauseIcon from '../media/img/icons/pause.svg';
+import volumeIcon from '../media/img/icons/volume.svg';
+import Isvg from 'react-inlinesvg';
+
+import '../styles/AudioPlayer.less';
 // import throttle from 'lodash.throttle';
 
 //<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -62,7 +65,9 @@ class AudioPlayer extends Component {
 
         return (
             <div className='player'>
-                <div className='player__svg-wrapper'>{this.props.logo}</div>
+                <div className='player__svg-wrapper'>
+                    <Isvg src={this.props.logo} />
+                </div>
                 <audio
                     ref={(audioEl) => this.audio = audioEl }
                     src={audioSrc}
@@ -76,21 +81,26 @@ class AudioPlayer extends Component {
                     type="button"
                     onClick={this.play}
                 >
-                    <PlayIcon />
+                    <Isvg src={playIcon} />
                 </button>
                 <button
                     className="player__control-btn player__control-btn--play"
                     type="button"
                     onClick={this.pause}
                 >
-                    <PauseIcon />
+                    <Isvg src={pauseIcon} />
                 </button>
-                <input
-                    id={id}
-                    type="range"
-                    value={this.state.volume}
-                    onChange={this.handleVolumeChange} min='0' max="1" step='0.01'
-                />
+                <div className='volume-wrapper'>
+                    <div className='player__control-btn'>
+                        <Isvg src={volumeIcon} />
+                    </div> 
+                    <input
+                        id={id}
+                        type="range"
+                        value={this.state.volume}
+                        onChange={this.handleVolumeChange} min='0' max="1" step='0.01'
+                    />
+                </div>
                 {id !== 'stream' &&
                     <div className='seekbar-wrapper'>
                         <span className='seekbar__timebox'>{formattedTime}</span>

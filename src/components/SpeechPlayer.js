@@ -5,8 +5,8 @@ import AudioPlayer from './AudioPlayer';
 
 import '../styles/SpeechPlayer.less';
 
-import SpeechAudioIcon from './icons/SpeechAudioIcon';
-import StreamAudioIcon from './icons/StreamAudioIcon';
+import speechAudioIcon from '../media/img/icons/speech.svg';
+import streamAudioIcon from '../media/img/icons/radio-stream.svg';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -79,13 +79,13 @@ class SpeechPlayer extends Component {
                             <AudioPlayer
                                 className="speech-player__audio-player"
                                 src={audioSrc}
-                                logo={<SpeechAudioIcon />}
+                                logo={speechAudioIcon}
                             />
                             <AudioPlayer
                                 className="speech-player__audio-player"
                                 src={currentRadioStream}
                                 id='stream'
-                                logo={<StreamAudioIcon />}
+                                logo={streamAudioIcon}
                             />
                         </div>
                     </div>

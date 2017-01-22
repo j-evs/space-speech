@@ -1,5 +1,6 @@
 .player {
     margin: 70px;
+    margin-bottom: 0;
     padding: 20px;
     flex-basis: 400px;
     display: flex;
@@ -11,9 +12,16 @@
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
     &__control-btn {
         background-color: transparent;
         border: none;
+
+        & svg {
+            width: 30px;
+            height: 30px;
+        }
     }
 
     &__svg-wrapper {
@@ -33,6 +41,19 @@
     &__timebox {
         display: inline-flex;
         align-items: center;
+    }
+}
+
+.volume  {
+    &-wrapper {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        width: 100%;
+        & input {
+            margin: 10px 5px;
+            height: 0;
+        }
     }
 }
 

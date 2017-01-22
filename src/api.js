@@ -4,7 +4,7 @@ import MLKPic1 from './media/King_IHaveADream/King_IHaveADream__pic1.jpg';
 import MLKPic2 from './media/King_IHaveADream/King_IHaveADream__pic2.jpg';
 import MLKPic3 from './media/King_IHaveADream/King_IHaveADream__pic3.jpg';
 import MLKPic4 from './media/King_IHaveADream/King_IHaveADream__pic4.jpg';
-import MLKIcon from './media/img/fist.svg';
+import MLKIcon from './media/img/icons/fist.svg';
 
 //Raegan "Challenger" speech
 import ChallengerSpeech from './media/Raegan_Challenger/Raegan_Challenger__speech.mp3';
@@ -12,7 +12,7 @@ import ChallengerPic1 from './media/Raegan_Challenger/Raegan_Challenger__pic1.jp
 import ChallengerPic2 from './media/Raegan_Challenger/Raegan_Challenger__pic2.jpg';
 import ChallengerPic3 from './media/Raegan_Challenger/Raegan_Challenger__pic3.jpg';
 import ChallengerPic4 from './media/Raegan_Challenger/Raegan_Challenger__pic4.jpg';
-import ChallengerIcon from './media/img/Shuttle.svg';
+import ChallengerIcon from './media/img/icons/shuttle.svg';
 
 //Kennedy "We choose to go to the Moon" speech
 import MoonSpeech from './media/Kennedy_Moon/Kennedy_Moon__speech.mp3';
@@ -20,7 +20,7 @@ import MoonPic1 from './media/Kennedy_Moon/Kennedy_Moon__pic1.jpg';
 import MoonPic2 from './media/Kennedy_Moon/Kennedy_Moon__pic2.jpg';
 import MoonPic3 from './media/Kennedy_Moon/Kennedy_Moon__pic3.jpg';
 import MoonPic4 from './media/Kennedy_Moon/Kennedy_Moon__pic4.jpg';
-import MoonIcon from './media/img/Moon.svg';
+import MoonIcon from './media/img/icons/moon.svg';
 
 const fakeDatabase = {
     MLK: {
