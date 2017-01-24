@@ -19,8 +19,6 @@ const mapStateToProps = (state) => ({
     speechesPreviewInfo: getSpeechesPreviewInfo(state.speechData),
 });
 
-
-
 const availableSpeeches = connect(
     mapStateToProps
 )(SpeechList);

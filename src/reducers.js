@@ -43,7 +43,7 @@ function importSpeechData(state = {}, action) {
     }
 }
 
-function currentRadioStream(state = '', action) {    
+function currentRadioStream(state = '', action) {
     switch (action.type) {
         case RECEIVED_STREAM:
             return action.url;

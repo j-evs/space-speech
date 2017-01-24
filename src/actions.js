@@ -11,33 +11,27 @@ export const FETCHING_SPEECHDATA = 'FETCHING_SPEECHDATA';
 export const RECEIVED_SPEECHDATA = 'RECEIVED_SPEECHDATA';
 
 
-export function getAudioStream() {
-    return {
-        type: GET_STREAM
-    }
-}
+export const getAudioStream = () => ({
+    type: GET_STREAM
+});
 
-export function recieveAudioStream(radioStreamURL) {
-    return {
-        type: RECEIVED_STREAM,
-        url: radioStreamURL
-    }
-}
 
-export function requestSpeechData() {
-    return {
-        type: FETCHING_SPEECHDATA
-    }
-}
+export const recieveAudioStream = (radioStreamURL) => ({
+    type: RECEIVED_STREAM,
+    url: radioStreamURL
+});
 
-export function receiveSpeechData(speechData) {
-    return {
-        type: RECEIVED_SPEECHDATA,
-        speechData
-    }
-}
 
-export function initializePlayback(speechID, radioPlaylistRequestURL) {
+export const requestSpeechData = () => ({
+    type: FETCHING_SPEECHDATA
+}) ;
+
+export const receiveSpeechData = (speechData) => ({
+    type: RECEIVED_SPEECHDATA,
+    speechData
+});
+
+export const initializePlayback = (speechID, radioPlaylistRequestURL) => {
     return dispatch => {
         dispatch(getAudioStream());
         return fetch('https://somafm.com/spacestation.pls')
@@ -45,12 +39,12 @@ export function initializePlayback(speechID, radioPlaylistRequestURL) {
             .then(text => playlistParser.parse(text))
             .then(playListinfo => dispatch(recieveAudioStream(playListinfo[0].file)))
     }
-}
+};
 
-export function getSpeechData() {
+export const getSpeechData = () => {
     return dispatch => {
         dispatch(requestSpeechData());
         return api.fetchSpeechData()
             .then(speechData => dispatch(receiveSpeechData(speechData)));
     }
-}
+};
