@@ -58,7 +58,28 @@
 }
 
 
+@media (max-width: 450px) {
+    .player {
+        padding: 5px;
+        flex-basis: 100px;
+        flex-grow: 1;
+        margin: 10px 50px;
 
+        &__svg-wrapper {
+            & svg {
+                widows: 25px;
+                height: 25px;
+            }
+        }
+
+        &__control-btn {
+            & svg {
+                width: 25px;
+                height: 25px;
+            }
+        }
+    }
+}
 
 // custom input
 input[type=range] {

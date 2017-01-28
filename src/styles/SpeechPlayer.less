@@ -109,3 +109,48 @@
     margin: 0 auto;
     display: flex;
 }
+
+
+@media (max-width: 1150px) {
+    .audio-players-wrapper {
+        top: 60%;
+    }
+}
+
+@media (max-width: 450px) {
+    @keyframes descriptionAnimation {
+        0% {
+            opacity: 0;
+            animation-timing-function: ease-in;
+        }
+        2% {
+            opacity: 1;
+            animation-timing-function: ease-out;
+        }
+        25% {
+            opacity: 1;
+        }
+        27% {
+            opacity: 0;
+            transform: translateY(200px);
+         }
+        100% {
+            opacity: 0;
+         }
+    }
+
+    .speech-player {
+        &__description {
+            font-size: 1.2rem;
+            top: 5%;
+            left: 5%;
+            max-width: 80vw;
+        }
+    }
+    .audio-players-wrapper {
+        max-width: 100%;
+        top: 50%;
+        height: 50vh;
+        flex-direction: column;
+    }
+}

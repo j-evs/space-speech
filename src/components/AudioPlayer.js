@@ -49,7 +49,7 @@ class AudioPlayer extends Component {
         this.setState({trackDuration: this.audio.duration});
     }
 
-    formatTimeInSeconds(timeInSeconds) {
+    formatTimeInSeconds(timeInSeconds = 0) {
         let minutes = Math.floor(timeInSeconds / 60);
         let seconds = Math.floor(timeInSeconds - (minutes * 60));
         seconds = seconds < 10 ? "0" + seconds : seconds;
